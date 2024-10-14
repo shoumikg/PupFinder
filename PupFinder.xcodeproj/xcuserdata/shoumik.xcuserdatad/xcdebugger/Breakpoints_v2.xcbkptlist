@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "9B904932-3231-4EE6-9636-DA0704BBCEF5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E - c4599c7f1ab0dc16"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PupFinder.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "560">
+               </Location>
+               <Location
+                  uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E - 389e64c7e27c733a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in PupFinder.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E - 402a45fe5619b5fe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in PupFinder.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E - c4599c7f1ab0de61"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PupFinder.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "CB19574A-7E72-4BDE-B904-018DB1D1983E - c4599c7f1ab0e0fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PupFinder.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "352">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B26C994-7FA1-4E31-9E7A-ECE11EF7B5C7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/BreedSampleViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "fetchNewSample(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
