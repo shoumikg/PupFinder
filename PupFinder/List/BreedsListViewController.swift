@@ -7,16 +7,21 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class BreedsListViewController: UIViewController {
     var model = BreedsListModel()
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            tableView.delegate = self
             tableView.dataSource = self
+            tableView.delegate = self
             tableView.addSubview(refreshControl)
+            tableView.register(UINib(nibName: "BreedsListCell", bundle: nil), forCellReuseIdentifier: "BreedsListCell")
         }
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +46,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.breedsList.count
     }
@@ -58,6 +63,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let subBreed = breedFullName.count == 2 ? breedFullName.first! : nil
         let sampleVC = BreedSampleViewController(breed: title, subBreed: subBreed)
         self.navigationController?.pushViewController(sampleVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
     }
 }
 

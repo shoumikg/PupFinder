@@ -36,6 +36,7 @@ class BreedSampleViewController: UIViewController {
         self.breed = breed
         self.subBreed = subBreed
         super.init(nibName: "BreedSampleViewController", bundle: nil)
+        hidesBottomBarWhenPushed = true
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +50,7 @@ class BreedSampleViewController: UIViewController {
     }
 
     @IBAction func fetchNewSample(_ sender: Any? = nil) {
-        let breedRoute = subBreed == nil ? "\(breed)" : "\(breed)/\(subBreed!)"
+        let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
         image.alpha = 0.5
         let url = URL(string: "https://dog.ceo/api/breed/\(breedRoute)/images/random")!
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in

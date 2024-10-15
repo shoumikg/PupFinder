@@ -26,10 +26,10 @@ final class BreedsListModel {
             breeds.forEach { breed in
                 if let subBreeds = breed.subBreeds, !subBreeds.isEmpty {
                     subBreeds.forEach { subBreed in
-                        answer.append(subBreed + " " + breed.title)
+                        answer.append(subBreed.capitaliseFirstLetter() + " " + breed.title.capitaliseFirstLetter())
                     }
                 } else {
-                    answer.append(breed.title)
+                    answer.append(breed.title.capitaliseFirstLetter())
                 }
             }
             return answer
