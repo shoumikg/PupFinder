@@ -7,16 +7,11 @@
 
 import UIKit
 
-struct BreedSampleResponse: Decodable {
-    let message: String
-    let status: String
-}
-
-class BreedSampleViewController: UIViewController {
+final class BreedSampleViewController: UIViewController {
 
     let breed: String
     let subBreed: String?
-    
+    let model: BreedsListModel
     
     @IBOutlet weak var image: UIImageView! {
         didSet {
@@ -32,9 +27,10 @@ class BreedSampleViewController: UIViewController {
         }
     }
     
-    init(breed: String, subBreed: String? = nil) {
+    init(breed: String, subBreed: String? = nil, model: BreedsListModel = BreedsListModel()) {
         self.breed = breed
         self.subBreed = subBreed
+        self.model = model
         super.init(nibName: "BreedSampleViewController", bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -58,25 +54,13 @@ class BreedSampleViewController: UIViewController {
             if let data = data, !data.isEmpty {
                 do {
                     let response = try JSONDecoder().decode(BreedSampleResponse.self, from: data)
-                    fetchImageFromURL(url: response.message)
+                    model.fetchImageFromURL(url: response.message) { [weak self] imageData in
+                        guard let self else { return }
+                        image.image = UIImage(data: imageData)
+                        image.alpha = 1.0
+                    }
                 } catch {
                     return
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    private func fetchImageFromURL(url: String) {
-        let urlRequest = URLRequest(url: URL(string: url)!)
-        
-        let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
-            guard let self, error == nil else { return }
-            if let data = data, !data.isEmpty {
-                DispatchQueue.main.sync{ [weak self] in
-                    guard let self else { return }
-                    image.image = UIImage(data: data)
-                    image.alpha = 1.0
                 }
             }
         }
