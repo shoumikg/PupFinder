@@ -87,7 +87,7 @@ final class BreedsListModel {
             guard let self, error == nil else { return }
             if let data = data, !data.isEmpty {
                 let result = try? JSONDecoder().decode(FeedResponse.self, from: data)
-                self.feedUrlList = result?.message ?? []
+                self.feedUrlList.append(contentsOf: result?.message ?? [])
                 completion()
             }
         }

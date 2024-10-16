@@ -15,6 +15,7 @@ final class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
             tableView.addSubview(refreshControl)
             tableView.register(UINib(nibName: "FeedImageCell", bundle: nil), forCellReuseIdentifier: "FeedImageCell")
         }
@@ -33,10 +34,15 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         title = "Feed"
         refreshControl.addTarget(self, action: #selector(refreshFeed(_:)), for: .valueChanged)
-        refreshFeed()
+        getMoreImagesForFeed()
     }
     
     @objc func refreshFeed(_ sender: Any? = nil) {
+        model.feedUrlList = []
+        getMoreImagesForFeed()
+    }
+    
+    private func getMoreImagesForFeed() {
         refreshControl.beginRefreshing()
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
@@ -51,7 +57,7 @@ final class FeedViewController: UIViewController {
     }
 }
 
-extension FeedViewController: UITableViewDataSource {
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.feedUrlList.count
     }
@@ -60,5 +66,11 @@ extension FeedViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath) as? FeedImageCell else { return UITableViewCell() }
         cell.loadImageFromUrl(url: model.feedUrlList[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 5 == model.feedUrlList.count {
+            getMoreImagesForFeed()
+        }
     }
 }
