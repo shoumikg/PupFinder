@@ -9,6 +9,9 @@ import UIKit
 
 class BreedsListCell: UITableViewCell {
     
+    let model = BreedsListModel()
+    var imageLoaded: Bool = false
+    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var img: UIImageView! {
         didSet {
@@ -29,4 +32,22 @@ class BreedsListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCellWithData(title: String) {
+        self.title.text = title
+        guard !imageLoaded else { return }
+        let breedFullName = title.components(separatedBy: " ")
+        let breed = breedFullName.count == 2 ? breedFullName.last! : breedFullName.first!
+        let subBreed = breedFullName.count == 2 ? breedFullName.first! : nil
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            self.model.fetchSampleFor(breed: breed, subBreed: subBreed) { imageData in
+                DispatchQueue.main.async{ [weak self] in
+                    guard let self else { return }
+                    img.image = UIImage(data: imageData)
+                    img.alpha = 1.0
+                    imageLoaded = true
+                }
+            }
+        }
+    }
 }
