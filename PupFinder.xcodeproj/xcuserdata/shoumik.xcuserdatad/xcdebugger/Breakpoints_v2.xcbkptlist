@@ -113,5 +113,212 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42704D2E-C038-47F0-9C40-75B8476E25B4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/List/BreedsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "refreshList(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42704D2E-C038-47F0-9C40-75B8476E25B4 - df4408e30c0666b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "42704D2E-C038-47F0-9C40-75B8476E25B4 - 45a4e7946951c961"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C49087A3-9CC1-4CF2-AEB4-A16EF5CA50D3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/List/BreedsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "refreshList(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C49087A3-9CC1-4CF2-AEB4-A16EF5CA50D3 - df4408e30c066692"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "C49087A3-9CC1-4CF2-AEB4-A16EF5CA50D3 - 45a4e7946951c940"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3B1BB5BF-6D0B-4AD1-9CA9-6B759C4DFC7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/List/BreedsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "refreshList(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3B1BB5BF-6D0B-4AD1-9CA9-6B759C4DFC7C - 2976140c67acdf01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  uuid = "3B1BB5BF-6D0B-4AD1-9CA9-6B759C4DFC7C - 1fd0fc50dbbad365"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "3B1BB5BF-6D0B-4AD1-9CA9-6B759C4DFC7C - 1fd0fc50dbbad365"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListViewController.refreshList(Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/List/BreedsListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "524B184B-2E05-4EA5-9AC5-A105688D8F38"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/Model/BreedsListModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "fetchBreedsList(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5ACAE7B-3205-4E69-AD76-8700B6EBFB0F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/List/BreedsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99317DBC-6386-4D96-B459-86416397327D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PupFinder/List/BreedsListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

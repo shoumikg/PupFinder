@@ -33,7 +33,7 @@ final class BreedsListViewController: UIViewController {
             guard let self else { return }
             model.fetchBreedsList { [weak self] in
                 guard let self else { return }
-                DispatchQueue.main.sync{ [weak self] in
+                DispatchQueue.main.async{ [weak self] in
                     guard let self else { return }
                     self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
@@ -57,8 +57,8 @@ extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BreedsListCell", for: indexPath)
-        cell.textLabel?.text = model.breedsList[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BreedsListCell", for: indexPath) as? BreedsListCell else { return UITableViewCell() }
+        cell.title.text = model.breedsList[indexPath.row]
         return cell
     }
     

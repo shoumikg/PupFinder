@@ -43,6 +43,7 @@ final class BreedsListModel {
                     answer.append(breed.title.capitaliseFirstLetter())
                 }
             }
+            answer.sort()
             return answer
         }
     }
