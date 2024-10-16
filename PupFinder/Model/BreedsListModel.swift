@@ -81,12 +81,16 @@ final class BreedsListModel {
         task.resume()
     }
     
-    func fetchImageFeed(completion: @escaping () -> ()) {
-        let urlRequest = URLRequest(url: URL(string: "https://dog.ceo/api/breeds/image/random/50")!)
+    func fetchImageFeed(resetFeed: Bool, 
+                        completion: @escaping () -> ()) {
+        let urlRequest = URLRequest(url: URL(string: "https://dog.ceo/api/breeds/image/random/10")!)
         let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let self, error == nil else { return }
             if let data = data, !data.isEmpty {
                 let result = try? JSONDecoder().decode(FeedResponse.self, from: data)
+                if resetFeed {
+                    feedUrlList = []
+                }
                 self.feedUrlList.append(contentsOf: result?.message ?? [])
                 completion()
             }

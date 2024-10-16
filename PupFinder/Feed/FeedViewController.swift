@@ -38,15 +38,13 @@ final class FeedViewController: UIViewController {
     }
     
     @objc func refreshFeed(_ sender: Any? = nil) {
-        model.feedUrlList = []
-        getMoreImagesForFeed()
+        getMoreImagesForFeed(resetFeed: true)
     }
     
-    private func getMoreImagesForFeed() {
-        refreshControl.beginRefreshing()
+    private func getMoreImagesForFeed(resetFeed: Bool = false) {
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
-            model.fetchImageFeed {
+            model.fetchImageFeed(resetFeed: resetFeed) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     tableView.reloadData()
@@ -69,7 +67,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 5 == model.feedUrlList.count {
+        if indexPath.row + 3 == model.feedUrlList.count {
             getMoreImagesForFeed()
         }
     }
