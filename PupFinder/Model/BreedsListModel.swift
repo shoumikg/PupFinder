@@ -43,7 +43,6 @@ final class BreedsListModel {
                     answer.append(breed.title.capitaliseFirstLetter())
                 }
             }
-            answer.sort()
             return answer
         }
     }
@@ -59,7 +58,7 @@ final class BreedsListModel {
                     response.message.forEach { (breed: String, subBreeds: [String]) in
                         answer.append(Breed(title: breed, subBreeds: subBreeds))
                     }
-                    self.breeds = answer
+                    self.breeds = answer.sorted(by: { $0.title < $1.title })
                     completion?()
                 } catch {
                     return
