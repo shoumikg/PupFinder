@@ -10,6 +10,13 @@ import UIKit
 class BreedsListCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var img: UIImageView! {
+        didSet {
+            img.image = UIImage(systemName: "photo.artframe")
+            img.tintColor = .gray
+            img.alpha = 0.5
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

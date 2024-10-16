@@ -59,6 +59,18 @@ extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BreedsListCell", for: indexPath) as? BreedsListCell else { return UITableViewCell() }
         cell.title.text = model.breedsList[indexPath.row]
+        let breedFullName = model.breedsList[indexPath.row].components(separatedBy: " ")
+        let title = breedFullName.count == 2 ? breedFullName.last! : breedFullName.first!
+        let subBreed = breedFullName.count == 2 ? breedFullName.first! : nil
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            self.model.fetchSampleFor(breed: title, subBreed: subBreed) { imageData in
+                DispatchQueue.main.async{
+                    cell.img.image = UIImage(data: imageData)
+                    cell.img.alpha = 1.0
+                }
+            }
+        }
         return cell
     }
     
@@ -71,7 +83,7 @@ extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 60
     }
 }
 

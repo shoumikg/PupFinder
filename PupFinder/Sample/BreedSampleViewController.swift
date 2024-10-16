@@ -46,30 +46,14 @@ final class BreedSampleViewController: UIViewController {
     }
 
     @IBAction func fetchNewSample(_ sender: Any? = nil) {
-        let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
         image.alpha = 0.5
-        let url = URL(string: "https://dog.ceo/api/breed/\(breedRoute)/images/random")!
-        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
-            guard let self, error == nil else { return }
-            if let data = data, !data.isEmpty {
-                do {
-                    let response = try JSONDecoder().decode(BreedSampleResponse.self, from: data)
-                    DispatchQueue.global().async { [weak self] in
-                        guard let self else { return }
-                        model.fetchImageFromURL(url: response.message) { [weak self] imageData in
-                            guard let self else { return }
-                            DispatchQueue.main.async { [weak self] in
-                                guard let self else { return }
-                                image.image = UIImage(data: imageData)
-                                image.alpha = 1.0
-                            }
-                        }
-                    }
-                } catch {
-                    return
-                }
+        model.fetchSampleFor(breed: breed, subBreed: subBreed) { [weak self] imageData in
+            guard let self else { return }
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                image.image = UIImage(data: imageData)
+                image.alpha = 1.0
             }
         }
-        task.resume()
     }
 }

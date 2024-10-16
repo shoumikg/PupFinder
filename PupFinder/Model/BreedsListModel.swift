@@ -69,7 +69,8 @@ final class BreedsListModel {
         task.resume()
     }
     
-    func fetchImageFromURL(url: String, completion: @escaping (Data) -> Void) {
+    func fetchImageFromURL(url: String, 
+                           completion: @escaping (Data) -> Void) {
         let urlRequest = URLRequest(url: URL(string: url)!)
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else { return }
@@ -88,6 +89,28 @@ final class BreedsListModel {
                 let result = try? JSONDecoder().decode(FeedResponse.self, from: data)
                 self.feedUrlList = result?.message ?? []
                 completion()
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchSampleFor(breed: String, 
+                        subBreed: String?,
+                        completion: @escaping (Data) -> Void) {
+        let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
+        let url = URL(string: "https://dog.ceo/api/breed/\(breedRoute)/images/random")!
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+            guard let self, error == nil else { return }
+            if let data = data, !data.isEmpty {
+                do {
+                    let response = try JSONDecoder().decode(BreedSampleResponse.self, from: data)
+                    DispatchQueue.global().async { [weak self] in
+                        guard let self else { return }
+                        self.fetchImageFromURL(url: response.message, completion: completion)
+                    }
+                } catch {
+                    return
+                }
             }
         }
         task.resume()
