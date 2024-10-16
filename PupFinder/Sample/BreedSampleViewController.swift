@@ -54,10 +54,16 @@ final class BreedSampleViewController: UIViewController {
             if let data = data, !data.isEmpty {
                 do {
                     let response = try JSONDecoder().decode(BreedSampleResponse.self, from: data)
-                    model.fetchImageFromURL(url: response.message) { [weak self] imageData in
+                    DispatchQueue.global().async { [weak self] in
                         guard let self else { return }
-                        image.image = UIImage(data: imageData)
-                        image.alpha = 1.0
+                        model.fetchImageFromURL(url: response.message) { [weak self] imageData in
+                            guard let self else { return }
+                            DispatchQueue.main.async { [weak self] in
+                                guard let self else { return }
+                                image.image = UIImage(data: imageData)
+                                image.alpha = 1.0
+                            }
+                        }
                     }
                 } catch {
                     return

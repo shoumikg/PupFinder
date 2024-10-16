@@ -38,11 +38,14 @@ final class FeedViewController: UIViewController {
     
     @objc func refreshFeed(_ sender: Any? = nil) {
         refreshControl.beginRefreshing()
-        model.fetchImageFeed {
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                tableView.reloadData()
-                refreshControl.endRefreshing()
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            model.fetchImageFeed {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    tableView.reloadData()
+                    refreshControl.endRefreshing()
+                }
             }
         }
     }
@@ -57,9 +60,5 @@ extension FeedViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath) as? FeedImageCell else { return UITableViewCell() }
         cell.loadImageFromUrl(url: model.feedUrlList[indexPath.row])
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
     }
 }

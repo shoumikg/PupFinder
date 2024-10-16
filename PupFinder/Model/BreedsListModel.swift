@@ -73,9 +73,7 @@ final class BreedsListModel {
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else { return }
             if let data = data, !data.isEmpty {
-                DispatchQueue.main.sync{
-                    completion(data)
-                }
+                completion(data)
             }
         }
         task.resume()
@@ -88,9 +86,7 @@ final class BreedsListModel {
             if let data = data, !data.isEmpty {
                 let result = try? JSONDecoder().decode(FeedResponse.self, from: data)
                 self.feedUrlList = result?.message ?? []
-                DispatchQueue.main.sync{
-                    completion()
-                }
+                completion()
             }
         }
         task.resume()

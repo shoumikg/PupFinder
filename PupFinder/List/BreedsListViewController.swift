@@ -29,10 +29,15 @@ final class BreedsListViewController: UIViewController {
     }
     
     @objc func refreshList(_ sender: Any? = nil) {
-        model.fetchBreedsList { [weak self] in
-            DispatchQueue.main.sync{
-                self?.refreshControl.endRefreshing()
-                self?.tableView.reloadData()
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            model.fetchBreedsList { [weak self] in
+                guard let self else { return }
+                DispatchQueue.main.sync{ [weak self] in
+                    guard let self else { return }
+                    self.refreshControl.endRefreshing()
+                    self.tableView.reloadData()
+                }
             }
         }
     }

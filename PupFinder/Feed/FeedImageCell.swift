@@ -31,6 +31,9 @@ class FeedImageCell: UITableViewCell {
     }
     
     func loadImageFromUrl(url: String) {
+        img.image = UIImage(systemName: "photo.artframe")
+        img.tintColor = .gray
+        img.alpha = 0.5
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
             model.fetchImageFromURL(url: url) { imageData in
