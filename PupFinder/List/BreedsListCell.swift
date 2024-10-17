@@ -10,7 +10,6 @@ import UIKit
 class BreedsListCell: UITableViewCell {
     
     let model = BreedsListModel()
-    var imageLoaded: Bool = false
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var img: UIImageView! {
@@ -34,7 +33,7 @@ class BreedsListCell: UITableViewCell {
     
     func setupCellWithData(title: String) {
         self.title.text = title
-        guard !imageLoaded else { return }
+        /*guard !imageLoaded else { return }
         let breedFullName = title.components(separatedBy: " ")
         let breed = breedFullName.count == 2 ? breedFullName.last! : breedFullName.first!
         let subBreed = breedFullName.count == 2 ? breedFullName.first! : nil
@@ -48,6 +47,6 @@ class BreedsListCell: UITableViewCell {
                     imageLoaded = true
                 }
             }
-        }
+        }*/
     }
 }

@@ -29,25 +29,23 @@ final class BreedsListViewController: UIViewController {
     }
     
     @objc func refreshList(_ sender: Any? = nil) {
-        DispatchQueue.global().async { [weak self] in
-            guard let self else { return }
-            model.fetchBreedsList { [weak self] in
-                guard let self else { return }
-                DispatchQueue.main.async{ [weak self] in
-                    guard let self else { return }
-                    self.refreshControl.endRefreshing()
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        refreshControl.endRefreshing()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Breeds List"
         refreshControl.addTarget(self, action: #selector(self.refreshList(_:)), for: .valueChanged)
-        self.refreshControl.beginRefreshing()
-        refreshList()
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            model.fetchBreedsList {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    tableView.reloadData()
+                }
+            }
+        }
     }
 }
 

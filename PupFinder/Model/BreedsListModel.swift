@@ -48,6 +48,7 @@ final class BreedsListModel {
     }
     
     func fetchBreedsList(completion: (() -> ())? = nil) {
+        guard breeds.isEmpty else { return }
         let url = URL(string: "https://dog.ceo/api/breeds/list/all")!
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
             guard error == nil else { return }
