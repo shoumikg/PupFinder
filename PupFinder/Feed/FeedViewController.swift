@@ -10,6 +10,7 @@ import UIKit
 final class FeedViewController: UIViewController {
     
     let model: BreedsListModel
+    private var breedName: String?
     let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView! {
@@ -21,9 +22,13 @@ final class FeedViewController: UIViewController {
         }
     }
     
-    init(model: BreedsListModel = BreedsListModel()) {
+    init(model: BreedsListModel = BreedsListModel(), breedName: String? = nil) {
         self.model = model
+        self.breedName = breedName
         super.init(nibName: "FeedViewController", bundle: nil)
+        if let breedName {
+            hidesBottomBarWhenPushed = true
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +37,7 @@ final class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Feed"
+        title = self.breedName == nil ? "Feed" : self.breedName
         refreshControl.addTarget(self, action: #selector(refreshFeed(_:)), for: .valueChanged)
         getMoreImagesForFeed()
     }
@@ -44,7 +49,7 @@ final class FeedViewController: UIViewController {
     private func getMoreImagesForFeed(resetFeed: Bool = false) {
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
-            model.fetchImageFeed(resetFeed: resetFeed) {
+            model.fetchImageFeed(breedName: breedName, resetFeed: resetFeed) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     tableView.reloadData()

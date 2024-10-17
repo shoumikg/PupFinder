@@ -57,16 +57,14 @@ extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BreedsListCell", for: indexPath) as? BreedsListCell else { return UITableViewCell() }
+        print("Fetching cell for row \(indexPath.row)")
         cell.setupCellWith(title: model.breedsList[indexPath.row])
         model.getBreedsListSample(forIndex: indexPath.row, completion: cell.setupCellWith)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let breedFullName = model.breedsList[indexPath.row].components(separatedBy: " ")
-        let title = breedFullName.count == 2 ? breedFullName.last! : breedFullName.first!
-        let subBreed = breedFullName.count == 2 ? breedFullName.first! : nil
-        let sampleVC = BreedSampleViewController(breed: title, subBreed: subBreed)
+        let sampleVC = FeedViewController(breedName: model.breedsList[indexPath.row])
         self.navigationController?.pushViewController(sampleVC, animated: true)
     }
     

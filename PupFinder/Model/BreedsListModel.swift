@@ -70,7 +70,7 @@ final class BreedsListModel {
         self.feedUrlList = feedUrlList
     }
     
-    private func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
+    func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
         let breedNameComponents = breedName.components(separatedBy: " ")
         let breed = breedNameComponents.count == 2 ? breedNameComponents.last! : breedNameComponents.first!
         let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first! : nil
@@ -78,23 +78,32 @@ final class BreedsListModel {
     }
     
     func resetAllBreedsListSampleImages() {
-        breedsListImageSample = [Data?](repeating: Data(), count: _breedsList.count)
+        breedsListImageSample = [Data?](repeating: nil, count: _breedsList.count)
     }
     
     func getBreedsListSample(forIndex: Int, completion: @escaping (Data) -> ()) {
-        guard forIndex < breedsListImageSample.count, breedsListImageSample[forIndex] == Data() else {
-            if forIndex < breedsListImageSample.count {
-                completion(breedsListImageSample[forIndex] ?? Data())
+        print("Fetching image for row \(forIndex)")
+        guard breedsListImageSample[forIndex] == nil else {
+            if breedsListImageSample[forIndex] != Data() {
+                print("Found existing image for row \(forIndex)")
+                completion(breedsListImageSample[forIndex]!)
             } else {
-                completion(Data())
+                print("No image found but async network task running for row \(forIndex)")
+                return
             }
             return
         }
         let (breed, subBreed) = getBreedSubBreedFrom(breedsList[forIndex])
-        fetchSampleFor(breed: breed, subBreed: subBreed) { [weak self] data in
+        breedsListImageSample[forIndex] = Data()
+        DispatchQueue.global().async{ [weak self] in
             guard let self else { return }
-            breedsListImageSample[forIndex] = data
-            completion(data)
+            print("Starting async network task for row \(forIndex)")
+            fetchSampleFor(breed: breed, subBreed: subBreed) { [weak self] data in
+                guard let self else { return }
+                breedsListImageSample[forIndex] = data
+                print("Finished async network task for row \(forIndex)")
+                completion(data)
+            }
         }
     }
     
@@ -132,9 +141,16 @@ final class BreedsListModel {
         task.resume()
     }
     
-    func fetchImageFeed(resetFeed: Bool, 
+    func fetchImageFeed(breedName: String? = nil,
+                        resetFeed: Bool,
                         completion: @escaping () -> ()) {
-        let urlRequest = URLRequest(url: URL(string: "https://dog.ceo/api/breeds/image/random/10")!)
+        var url = "https://dog.ceo/api/breeds/image/random/10"
+        if let breedName {
+            let (breed, subBreed) = getBreedSubBreedFrom(breedName)
+            let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
+            url = "https://dog.ceo/api/breed/\(breedRoute)/images/random/10"
+        }
+        let urlRequest = URLRequest(url: URL(string: url)!)
         let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let self, error == nil else { return }
             if let data = data, !data.isEmpty {
@@ -149,9 +165,9 @@ final class BreedsListModel {
         task.resume()
     }
     
-    func fetchSampleFor(breed: String, 
-                        subBreed: String?,
-                        completion: @escaping (Data) -> Void) {
+    private func fetchSampleFor(breed: String,
+                                subBreed: String?,
+                                completion: @escaping (Data) -> Void) {
         let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
         let url = URL(string: "https://dog.ceo/api/breed/\(breedRoute)/images/random")!
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9226AA452CBD66770071A868 /* BreedSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226AA432CBD66770071A868 /* BreedSampleViewController.swift */; };
-		9226AA462CBD66770071A868 /* BreedSampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9226AA442CBD66770071A868 /* BreedSampleViewController.xib */; };
 		9226AA482CBD6F0D0071A868 /* BreedsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */; };
 		92BCD0D62CBEDF5600373C64 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */; };
 		92BCD0D72CBEDF5600373C64 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */; };
@@ -47,8 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9226AA432CBD66770071A868 /* BreedSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedSampleViewController.swift; sourceTree = "<group>"; };
-		9226AA442CBD66770071A868 /* BreedSampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedSampleViewController.xib; sourceTree = "<group>"; };
 		9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListModel.swift; sourceTree = "<group>"; };
 		92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -120,15 +116,6 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		92DAA4BA2CBEAEDA00ECA164 /* Sample */ = {
-			isa = PBXGroup;
-			children = (
-				9226AA432CBD66770071A868 /* BreedSampleViewController.swift */,
-				9226AA442CBD66770071A868 /* BreedSampleViewController.xib */,
-			);
-			path = Sample;
-			sourceTree = "<group>";
-		};
 		92DAA4BB2CBEAEE900ECA164 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +168,6 @@
 				92BCD0D32CBEDF4700373C64 /* Feed */,
 				92DAA4C62CBEB7EA00ECA164 /* Main */,
 				92DAA4BB2CBEAEE900ECA164 /* Model */,
-				92DAA4BA2CBEAEDA00ECA164 /* Sample */,
 				92DAA4B92CBEAED000ECA164 /* List */,
 				92DAA4C92CBEBBD500ECA164 /* Utils */,
 				92E5DD382CBD454000502A55 /* Assets.xcassets */,
@@ -316,7 +302,6 @@
 				92DAA4C52CBEB53600ECA164 /* BreedsListCell.xib in Resources */,
 				92BCD0DB2CBEE40900373C64 /* FeedImageCell.xib in Resources */,
 				92DAA4C12CBEB3F200ECA164 /* BreedsListViewController.xib in Resources */,
-				9226AA462CBD66770071A868 /* BreedSampleViewController.xib in Resources */,
 				92BCD0D72CBEDF5600373C64 /* FeedViewController.xib in Resources */,
 				92E5DD3C2CBD454000502A55 /* Base in Resources */,
 			);
@@ -349,7 +334,6 @@
 				9226AA482CBD6F0D0071A868 /* BreedsListModel.swift in Sources */,
 				92DAA4C82CBEB81D00ECA164 /* MainTabBarController.swift in Sources */,
 				92DAA4CB2CBEBBED00ECA164 /* String+Extensions.swift in Sources */,
-				9226AA452CBD66770071A868 /* BreedSampleViewController.swift in Sources */,
 				92E5DD302CBD453F00502A55 /* AppDelegate.swift in Sources */,
 				92E5DD322CBD453F00502A55 /* SceneDelegate.swift in Sources */,
 				92BCD0DA2CBEE40900373C64 /* FeedImageCell.swift in Sources */,

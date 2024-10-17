@@ -21,6 +21,7 @@ class BreedsListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        prepareForReuse()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,7 +42,7 @@ class BreedsListCell: UITableViewCell {
     
     func setupCellWith(imageData: Data) {
         DispatchQueue.main.async{ [weak self] in
-            guard let self else { return }
+            guard let self, imageData != Data() else { return }
             img.image = UIImage(data: imageData)
             img.alpha = 1.0
         }
