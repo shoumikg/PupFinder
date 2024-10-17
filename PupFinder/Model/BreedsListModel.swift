@@ -28,11 +28,24 @@ struct FeedResponse: Decodable {
 }
 
 final class BreedsListModel {
-    private var breeds: [Breed] = []
-    var feedUrlList: [String] = []
-    
+    private var breeds: [Breed]
+    private var breedsUrlList: [String] {
+        get {
+            guard _breedsUrlList.isEmpty else { return _breedsUrlList }
+            _breedsUrlList = breedsList.map { breedName in
+                let (breed, subBreed) = getBreedSubBreedFrom(breedName)
+                let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
+                return "https://dog.ceo/api/breed/\(breedRoute)/images/random"
+            }
+            return _breedsUrlList
+        }
+    }
+    private var _breedsUrlList = [String]()
+    private var breedsListImageSample = [Data?]()
+    private var _breedsList = [String]()
     var breedsList: [String] {
         get {
+            guard _breedsList.isEmpty else { return _breedsList }
             var answer: [String] = []
             breeds.forEach { breed in
                 if let subBreeds = breed.subBreeds, !subBreeds.isEmpty {
@@ -43,7 +56,45 @@ final class BreedsListModel {
                     answer.append(breed.title.capitaliseFirstLetter())
                 }
             }
+            _breedsList = answer
+            self.resetAllBreedsListSampleImages()
             return answer
+        }
+    }
+    
+    var feedUrlList: [String]
+    
+    init(breeds: [Breed] = [],
+         feedUrlList: [String] = []) {
+        self.breeds = breeds
+        self.feedUrlList = feedUrlList
+    }
+    
+    private func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
+        let breedNameComponents = breedName.components(separatedBy: " ")
+        let breed = breedNameComponents.count == 2 ? breedNameComponents.last! : breedNameComponents.first!
+        let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first! : nil
+        return (breed, subBreed)
+    }
+    
+    func resetAllBreedsListSampleImages() {
+        breedsListImageSample = [Data?](repeating: Data(), count: _breedsList.count)
+    }
+    
+    func getBreedsListSample(forIndex: Int, completion: @escaping (Data) -> ()) {
+        guard forIndex < breedsListImageSample.count, breedsListImageSample[forIndex] == Data() else {
+            if forIndex < breedsListImageSample.count {
+                completion(breedsListImageSample[forIndex] ?? Data())
+            } else {
+                completion(Data())
+            }
+            return
+        }
+        let (breed, subBreed) = getBreedSubBreedFrom(breedsList[forIndex])
+        fetchSampleFor(breed: breed, subBreed: subBreed) { [weak self] data in
+            guard let self else { return }
+            breedsListImageSample[forIndex] = data
+            completion(data)
         }
     }
     

@@ -29,6 +29,7 @@ final class BreedsListViewController: UIViewController {
     }
     
     @objc func refreshList(_ sender: Any? = nil) {
+        model.resetAllBreedsListSampleImages()
         refreshControl.endRefreshing()
         tableView.reloadData()
     }
@@ -56,7 +57,8 @@ extension BreedsListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BreedsListCell", for: indexPath) as? BreedsListCell else { return UITableViewCell() }
-        cell.setupCellWithData(title: model.breedsList[indexPath.row])
+        cell.setupCellWith(title: model.breedsList[indexPath.row])
+        model.getBreedsListSample(forIndex: indexPath.row, completion: cell.setupCellWith)
         return cell
     }
     
