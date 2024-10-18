@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9226AA482CBD6F0D0071A868 /* BreedsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */; };
+		929923812CC23E2D00A01A6B /* BreedsListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929923802CC23E2D00A01A6B /* BreedsListModelTests.swift */; };
 		92BCD0D62CBEDF5600373C64 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */; };
 		92BCD0D72CBEDF5600373C64 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */; };
 		92BCD0DA2CBEE40900373C64 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCD0D82CBEE40900373C64 /* FeedImageCell.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListModel.swift; sourceTree = "<group>"; };
+		929923802CC23E2D00A01A6B /* BreedsListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListModelTests.swift; sourceTree = "<group>"; };
 		92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
 		92BCD0D82CBEE40900373C64 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9299237F2CC23D4900A01A6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				929923802CC23E2D00A01A6B /* BreedsListModelTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		92BCD0D32CBEDF4700373C64 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 		92E5DD452CBD454000502A55 /* PupFinderTests */ = {
 			isa = PBXGroup;
 			children = (
+				9299237F2CC23D4900A01A6B /* Model */,
 				92E5DD462CBD454000502A55 /* PupFinderTests.swift */,
 			);
 			path = PupFinderTests;
@@ -344,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929923812CC23E2D00A01A6B /* BreedsListModelTests.swift in Sources */,
 				92E5DD472CBD454000502A55 /* PupFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,7 +580,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JWDLN363WF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = shoumik.personal.PupFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -588,7 +600,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JWDLN363WF;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = shoumik.personal.PupFinderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
