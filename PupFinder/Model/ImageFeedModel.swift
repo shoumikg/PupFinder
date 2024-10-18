@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct FeedResponse: Decodable {
+    let message: [String]
+    let status: String
+}
 
 final class ImageFeedModel {
     

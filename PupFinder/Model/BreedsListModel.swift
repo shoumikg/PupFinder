@@ -22,11 +22,6 @@ struct BreedSampleResponse: Decodable {
     let status: String
 }
 
-struct FeedResponse: Decodable {
-    let message: [String]
-    let status: String
-}
-
 final class BreedsListModel {
     private var breeds: [Breed]
     private var breedsUrlList: [String] {
@@ -66,13 +61,6 @@ final class BreedsListModel {
         self.breeds = breeds
     }
     
-    static func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
-        let breedNameComponents = breedName.components(separatedBy: " ")
-        let breed = breedNameComponents.count == 2 ? breedNameComponents.last ?? "" : breedNameComponents.first ?? ""
-        let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first ?? "" : nil
-        return (breed, subBreed)
-    }
-    
     func resetAllBreedsListSampleImages() {
         breedsListImageSample = [Data?](repeating: nil, count: _breedsList.count)
     }
@@ -104,10 +92,9 @@ final class BreedsListModel {
     }
     
     func fetchBreedsList(completion: (() -> ())? = nil) {
-        guard breeds.isEmpty else { return }
         let url = URL(string: "https://dog.ceo/api/breeds/list/all")!
-        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            guard error == nil else { return }
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+            guard let self, error == nil else { return }
             if let data = data, !data.isEmpty {
                 do {
                     let response = try JSONDecoder().decode(ListAllBreedsResponse.self, from: data)
@@ -128,8 +115,8 @@ final class BreedsListModel {
     func fetchImageFromURL(url: String, 
                            completion: @escaping (Data) -> Void) {
         let urlRequest = URLRequest(url: URL(string: url)!)
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            guard error == nil else { return }
+        let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
+            guard let self, error == nil else { return }
             if let data = data, !data.isEmpty {
                 completion(data)
             }
@@ -157,5 +144,14 @@ final class BreedsListModel {
             }
         }
         task.resume()
+    }
+}
+
+extension BreedsListModel {
+    static func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
+        let breedNameComponents = breedName.components(separatedBy: " ")
+        let breed = breedNameComponents.count == 2 ? breedNameComponents.last ?? "" : breedNameComponents.first ?? ""
+        let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first ?? "" : nil
+        return (breed, subBreed)
     }
 }
