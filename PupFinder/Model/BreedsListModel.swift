@@ -33,7 +33,7 @@ final class BreedsListModel {
         get {
             guard _breedsUrlList.isEmpty else { return _breedsUrlList }
             _breedsUrlList = breedsList.map { breedName in
-                let (breed, subBreed) = getBreedSubBreedFrom(breedName)
+                let (breed, subBreed) = BreedsListModel.getBreedSubBreedFrom(breedName)
                 let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
                 return "https://dog.ceo/api/breed/\(breedRoute)/images/random"
             }
@@ -62,15 +62,11 @@ final class BreedsListModel {
         }
     }
     
-    var feedUrlList: [String]
-    
-    init(breeds: [Breed] = [],
-         feedUrlList: [String] = []) {
+    init(breeds: [Breed] = []) {
         self.breeds = breeds
-        self.feedUrlList = feedUrlList
     }
     
-    func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
+    static func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
         let breedNameComponents = breedName.components(separatedBy: " ")
         let breed = breedNameComponents.count == 2 ? breedNameComponents.last ?? "" : breedNameComponents.first ?? ""
         let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first ?? "" : nil
@@ -93,7 +89,7 @@ final class BreedsListModel {
             }
             return
         }
-        let (breed, subBreed) = getBreedSubBreedFrom(breedsList[forIndex])
+        let (breed, subBreed) = BreedsListModel.getBreedSubBreedFrom(breedsList[forIndex])
         breedsListImageSample[forIndex] = Data()
         DispatchQueue.global().async{ [weak self] in
             guard let self else { return }
@@ -136,30 +132,6 @@ final class BreedsListModel {
             guard error == nil else { return }
             if let data = data, !data.isEmpty {
                 completion(data)
-            }
-        }
-        task.resume()
-    }
-    
-    func fetchImageFeed(breedName: String? = nil,
-                        resetFeed: Bool,
-                        completion: @escaping () -> ()) {
-        var url = "https://dog.ceo/api/breeds/image/random/10"
-        if let breedName {
-            let (breed, subBreed) = getBreedSubBreedFrom(breedName)
-            let breedRoute = subBreed == nil ? "\(breed.lowercased())" : "\(breed.lowercased())/\(subBreed!.lowercased())"
-            url = "https://dog.ceo/api/breed/\(breedRoute)/images/random/10"
-        }
-        let urlRequest = URLRequest(url: URL(string: url)!)
-        let task = URLSession.shared.dataTask(with: urlRequest) { [weak self] data, response, error in
-            guard let self, error == nil else { return }
-            if let data = data, !data.isEmpty {
-                let result = try? JSONDecoder().decode(FeedResponse.self, from: data)
-                if resetFeed {
-                    feedUrlList = []
-                }
-                self.feedUrlList.append(contentsOf: result?.message ?? [])
-                completion()
             }
         }
         task.resume()

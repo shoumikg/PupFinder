@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9226AA482CBD6F0D0071A868 /* BreedsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */; };
 		929923812CC23E2D00A01A6B /* BreedsListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929923802CC23E2D00A01A6B /* BreedsListModelTests.swift */; };
+		929923832CC2638E00A01A6B /* ImageFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929923822CC2638E00A01A6B /* ImageFeedModel.swift */; };
 		92BCD0D62CBEDF5600373C64 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */; };
 		92BCD0D72CBEDF5600373C64 /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */; };
 		92BCD0DA2CBEE40900373C64 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BCD0D82CBEE40900373C64 /* FeedImageCell.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListModel.swift; sourceTree = "<group>"; };
 		929923802CC23E2D00A01A6B /* BreedsListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListModelTests.swift; sourceTree = "<group>"; };
+		929923822CC2638E00A01A6B /* ImageFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedModel.swift; sourceTree = "<group>"; };
 		92BCD0D42CBEDF5600373C64 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		92BCD0D52CBEDF5600373C64 /* FeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
 		92BCD0D82CBEE40900373C64 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				9226AA472CBD6F0D0071A868 /* BreedsListModel.swift */,
+				929923822CC2638E00A01A6B /* ImageFeedModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				92DAA4C02CBEB3F200ECA164 /* BreedsListViewController.swift in Sources */,
 				9226AA482CBD6F0D0071A868 /* BreedsListModel.swift in Sources */,
 				92DAA4C82CBEB81D00ECA164 /* MainTabBarController.swift in Sources */,
+				929923832CC2638E00A01A6B /* ImageFeedModel.swift in Sources */,
 				92DAA4CB2CBEBBED00ECA164 /* String+Extensions.swift in Sources */,
 				92E5DD302CBD453F00502A55 /* AppDelegate.swift in Sources */,
 				92E5DD322CBD453F00502A55 /* SceneDelegate.swift in Sources */,

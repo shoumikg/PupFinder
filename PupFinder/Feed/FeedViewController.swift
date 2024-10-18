@@ -9,7 +9,8 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
-    let model: BreedsListModel
+    let listModel: BreedsListModel
+    let feedModel: ImageFeedModel
     private var breedName: String?
     let refreshControl = UIRefreshControl()
     
@@ -22,9 +23,10 @@ final class FeedViewController: UIViewController {
         }
     }
     
-    init(model: BreedsListModel = BreedsListModel(), breedName: String? = nil) {
-        self.model = model
+    init(listModel: BreedsListModel = BreedsListModel(), breedName: String? = nil, feedModel: ImageFeedModel = ImageFeedModel()) {
+        self.listModel = listModel
         self.breedName = breedName
+        self.feedModel = feedModel
         super.init(nibName: "FeedViewController", bundle: nil)
         if breedName != nil {
             hidesBottomBarWhenPushed = true
@@ -49,7 +51,7 @@ final class FeedViewController: UIViewController {
     private func getMoreImagesForFeed(resetFeed: Bool = false) {
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
-            model.fetchImageFeed(breedName: breedName, resetFeed: resetFeed) {
+            feedModel.fetchImageFeed(breedName: breedName, resetFeed: resetFeed) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
                     tableView.reloadData()
@@ -62,17 +64,17 @@ final class FeedViewController: UIViewController {
 
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model.feedUrlList.count
+        feedModel.feedUrlList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath) as? FeedImageCell else { return UITableViewCell() }
-        cell.loadImageFromUrl(url: model.feedUrlList[indexPath.row])
+        cell.loadImageFromUrl(url: feedModel.feedUrlList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == model.feedUrlList.count {
+        if indexPath.row + 1 == feedModel.feedUrlList.count {
             getMoreImagesForFeed()
         }
     }

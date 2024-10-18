@@ -17,7 +17,6 @@ final class BreedsListModelTests: XCTestCase {
         
         //Then
         XCTAssertEqual(sut.breedsList, [])
-        XCTAssertEqual(sut.feedUrlList, [])
     }
     
     func test_fetchBreedsList_setsBreedsList() {
@@ -26,15 +25,13 @@ final class BreedsListModelTests: XCTestCase {
         let exp = expectation(description: "wait for breeds list fetch")
         
         //When
-        sut.fetchBreedsList { [weak self] in
-            guard let self else { return }
+        sut.fetchBreedsList {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
         
-        //Assert
+        //Then
         XCTAssertNotEqual(sut.breedsList, [])
-        XCTAssertEqual(sut.feedUrlList, [])
     }
     
     func test_getBreedSubBreedFrom_getsBreedSubbreed() {
@@ -45,11 +42,11 @@ final class BreedsListModelTests: XCTestCase {
         let breedName3 = ""
         
         //When
-        let (breed1, subBreed1) = sut.getBreedSubBreedFrom(breedName1)
-        let (breed2, subBreed2) = sut.getBreedSubBreedFrom(breedName2)
-        let (breed3, subBreed3) = sut.getBreedSubBreedFrom(breedName3)
+        let (breed1, subBreed1) = BreedsListModel.getBreedSubBreedFrom(breedName1)
+        let (breed2, subBreed2) = BreedsListModel.getBreedSubBreedFrom(breedName2)
+        let (breed3, subBreed3) = BreedsListModel.getBreedSubBreedFrom(breedName3)
         
-        //Assert
+        //Then
         XCTAssertEqual(breed1, "Shepherd")
         XCTAssertEqual(subBreed1, "Australian")
         XCTAssertEqual(breed2, "Shiba")
