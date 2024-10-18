@@ -72,8 +72,8 @@ final class BreedsListModel {
     
     func getBreedSubBreedFrom(_ breedName: String) -> (String, String?) {
         let breedNameComponents = breedName.components(separatedBy: " ")
-        let breed = breedNameComponents.count == 2 ? breedNameComponents.last! : breedNameComponents.first!
-        let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first! : nil
+        let breed = breedNameComponents.count == 2 ? breedNameComponents.last ?? "" : breedNameComponents.first ?? ""
+        let subBreed = breedNameComponents.count == 2 ? breedNameComponents.first ?? "" : nil
         return (breed, subBreed)
     }
     
