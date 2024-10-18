@@ -26,7 +26,7 @@ final class FeedViewController: UIViewController {
         self.model = model
         self.breedName = breedName
         super.init(nibName: "FeedViewController", bundle: nil)
-        if let breedName {
+        if breedName != nil {
             hidesBottomBarWhenPushed = true
         }
     }
@@ -72,7 +72,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 3 == model.feedUrlList.count {
+        if indexPath.row + 1 == model.feedUrlList.count {
             getMoreImagesForFeed()
         }
     }

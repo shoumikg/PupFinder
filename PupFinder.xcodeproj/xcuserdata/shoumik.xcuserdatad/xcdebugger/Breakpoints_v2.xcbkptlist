@@ -50,6 +50,38 @@
             endingLineNumber = "105"
             landmarkName = "getBreedsListSample(forIndex:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D6C0B880-C332-4C0D-A790-13AEDEC1024F - 8a0a979290bc5901"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PupFinder.BreedsListModel.fetchBreedsList(completion: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/Model/BreedsListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "D6C0B880-C332-4C0D-A790-13AEDEC1024F - 8e95b5d29c7572fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.Data) -&gt; () in closure #1 @Sendable () -&gt; () in PupFinder.BreedsListModel.getBreedsListSample(forIndex: Swift.Int, completion: (Foundation.Data) -&gt; ()) -&gt; ()"
+                  moduleName = "PupFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shoumik/Developer/Shoumik/Projects/PupFinder/PupFinder/Model/BreedsListModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "760">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
